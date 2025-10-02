@@ -1,34 +1,48 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import './App.css';
+import { useState } from 'react';
 
-function App() {
-  const [count, setCount] = useState(0)
+const cards = [
+  { front: "Hello", back: "Xin chào" },
+  { front: "How are you?", back: "Bạn khỏe không?" },
+  { front: "Thank you", back: "Cảm ơn" },
+  { front: "Car", back: "Xe ô tô" },
+  { front: "Phone", back: "Điện thoại" },
+  { front: "Music", back: "Âm nhạc" },
+  { front: "Computer", back: "Máy tính" },
+  { front: "Water", back: "Nước" },
+  { front: "Pencil", back: "Bút chì" },
+  { front: "Headphone", back: "Tai nghe" }
+];
+
+const App = () => {
+  const [current, setCurrent] = useState(0);
+  const [flip, setFlip] = useState(0);
+
+  const flipCard = () => {
+    setFlip((flip + 1) % 2);
+  }
+
+  const nextCard = () => {
+    setCurrent((current + 1) % 10);
+    setFlip(0);
+  }
 
   return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
+    <div className="App">
+      <div className='header'>
+        <h1>The Vietnamese Flashcard!</h1>
+        <h2>Check your knowledge of Vietnamese with this flashcard!</h2>
+        <h3>Number of cards: 10</h3>
       </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
+      <div className={"card" + flip} onClick={flipCard}>
+        {flip ? (
+          <h2 className='back'>{cards[current].back}</h2>
+        ) : (
+          <h2 className='front'>{cards[current].front}</h2>
+        )}
       </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
+      <button onClick={nextCard}>Next</button>
+    </div>
   )
 }
 

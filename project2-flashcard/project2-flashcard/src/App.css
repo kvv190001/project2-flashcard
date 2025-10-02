@@ -40,3 +40,21 @@
 .read-the-docs {
   color: #888;
 }
+
+.card0 {
+  border: 1px solid rgba(153, 153, 153, 0.497);
+  border-radius: 25px;
+  padding: 70px 10px 70px 10px;
+  background-color: lightgreen;
+}
+
+.card1 {
+  border: 1px solid rgba(153, 153, 153, 0.497);
+  border-radius: 25px;
+  padding: 70px 10px 70px 10px;
+  background-color: lightskyblue;
+}
+
+button {
+  margin-top: 30px;
+}
